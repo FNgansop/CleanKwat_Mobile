@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Collector;public partial class ConfirmCollectionPage:ContentPage{public ConfirmCollectionPage(){InitializeComponent();BindingContext=ServiceHelper.Get<ConfirmCollectionViewModel>();}}

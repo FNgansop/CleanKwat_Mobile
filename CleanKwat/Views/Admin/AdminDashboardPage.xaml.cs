@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Admin;public partial class AdminDashboardPage:ContentPage{public AdminDashboardPage(){InitializeComponent();BindingContext=ServiceHelper.Get<AdminDashboardViewModel>();}}

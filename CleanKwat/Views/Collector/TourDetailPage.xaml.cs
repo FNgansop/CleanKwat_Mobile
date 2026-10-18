@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Collector;public partial class TourDetailPage:ContentPage{public TourDetailPage(){InitializeComponent();BindingContext=ServiceHelper.Get<TourDetailViewModel>();}}

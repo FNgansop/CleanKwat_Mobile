@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Collector;public partial class CollectorLoginPage:ContentPage{public CollectorLoginPage(){InitializeComponent();BindingContext=ServiceHelper.Get<CollectorLoginViewModel>();}}
