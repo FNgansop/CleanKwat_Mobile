@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Household;public partial class HouseholdHomePage:ContentPage{private readonly HouseholdHomeViewModel vm=ServiceHelper.Get<HouseholdHomeViewModel>();public HouseholdHomePage(){InitializeComponent();BindingContext=vm;}protected override async void OnAppearing(){base.OnAppearing();await vm.LoadAsync();}}

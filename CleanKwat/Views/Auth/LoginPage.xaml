@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CleanKwat.Controls" x:Class="CleanKwat.Views.Auth.LoginPage">
+  <ScrollView><VerticalStackLayout Padding="28,22,28,32" Spacing="16">
+    <controls:PageHeader Title="Se connecter" Subtitle="Connectez-vous pour accéder à votre espace."/>
+    <Label Text="Numéro de téléphone" Style="{StaticResource Caption}"/><Border Style="{StaticResource FieldBorder}"><Entry Text="{Binding Identifier}" Style="{StaticResource EntryStyle}"/></Border>
+    <Label Text="Mot de passe" Style="{StaticResource Caption}"/><Border Style="{StaticResource FieldBorder}"><Entry Text="{Binding Password}" IsPassword="True" Style="{StaticResource EntryStyle}"/></Border>
+    <Button Text="Mot de passe oublié ?" Style="{StaticResource TextButton}" HorizontalOptions="End" Command="{Binding ForgotCommand}"/>
+    <Label Text="{Binding ErrorMessage}" TextColor="{StaticResource Error}" Style="{StaticResource Caption}" IsVisible="{Binding HasError}"/>
+    <Button Text="Se connecter" Style="{StaticResource PrimaryButton}" Command="{Binding LoginCommand}"/>
+    <Label Text="Ou continuer avec" Style="{StaticResource Caption}" HorizontalTextAlignment="Center"/>
+    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="14"><Button Grid.Column="0" Text="G" Style="{StaticResource SecondaryButton}"/><Button Grid.Column="1" Text="in" Style="{StaticResource SecondaryButton}"/><Button Grid.Column="2" Text="f" Style="{StaticResource SecondaryButton}"/></Grid>
+    <HorizontalStackLayout HorizontalOptions="Center" Spacing="3"><Label Text="Pas de compte ?" Style="{StaticResource Caption}"/><Button Text="Créer un compte" Style="{StaticResource TextButton}" FontSize="12" Command="{Binding RegisterCommand}"/></HorizontalStackLayout>
+    <Button Text="Accès Ramasseur" Style="{StaticResource SecondaryButton}" Clicked="OnCollectorClicked"/>
+  </VerticalStackLayout></ScrollView>
+</ContentPage>

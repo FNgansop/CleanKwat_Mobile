@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CleanKwat.Views.Auth.OnboardingPage" Padding="0">
+  <Grid>
+    <Image Source="launch_background.png" Aspect="AspectFill"/>
+    <BoxView Color="#55081713"/>
+    <Grid Padding="28,54,28,34" RowDefinitions="Auto,*,Auto">
+      <VerticalStackLayout Grid.Row="0" HorizontalOptions="Center" Spacing="12">
+        <Image Source="ck_01_brand_mark_concept.svg" WidthRequest="112" HeightRequest="112"/>
+        <Label Text="CleanKwat" FontSize="34" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        <Label Text="Des quartiers propres,&#10;des ménages sereins" FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+      </VerticalStackLayout>
+      <VerticalStackLayout Grid.Row="2" Spacing="12">
+        <Label Text="Une ville propre aujourd’hui,&#10;un meilleur demain." FontSize="17" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,0,0,6"/>
+        <Button Text="Suivant" Style="{StaticResource PrimaryButton}" Command="{Binding ContinueCommand}"/>
+        <Button Text="Passer" Style="{StaticResource TextButton}" Command="{Binding SkipCommand}"/>
+      </VerticalStackLayout>
+    </Grid>
+  </Grid>
+</ContentPage>

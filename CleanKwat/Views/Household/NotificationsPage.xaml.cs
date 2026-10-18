@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Household;public partial class NotificationsPage:ContentPage{private readonly NotificationsViewModel vm=ServiceHelper.Get<NotificationsViewModel>();public NotificationsPage(){InitializeComponent();BindingContext=vm;}protected override async void OnAppearing(){base.OnAppearing();await vm.LoadAsync();}}

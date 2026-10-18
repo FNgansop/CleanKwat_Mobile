@@ -1,0 +1,1 @@
+using CleanKwat.Constants;using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Auth;public partial class LoginPage:ContentPage{public LoginPage(){InitializeComponent();BindingContext=ServiceHelper.Get<LoginViewModel>();}private async void OnCollectorClicked(object? s,EventArgs e)=>await Shell.Current.GoToAsync(Routes.CollectorLogin);}

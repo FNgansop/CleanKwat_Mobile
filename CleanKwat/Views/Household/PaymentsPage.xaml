@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CleanKwat.Controls" x:Class="CleanKwat.Views.Household.PaymentsPage">
+  <Grid Padding="28,22,28,28" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="14">
+    <controls:PageHeader Grid.Row="0" Eyebrow="Espace Ménage" Title="Paiements" Subtitle="Suivez vos paiements mensuels."/>
+    <Border Grid.Row="1" Style="{StaticResource CardOutline}"><Grid ColumnDefinitions="Auto,*"><Image Source="ck_12_mobile_money_generic.svg" WidthRequest="70" HeightRequest="60"/><VerticalStackLayout Grid.Column="1"><Label Text="Abonnement Standard" FontAttributes="Bold"/><Label Text="2 000 FCFA / mois" TextColor="{StaticResource PrimaryBright}" FontSize="18" FontAttributes="Bold"/><Label Text="Mobile Money disponible" Style="{StaticResource Caption}"/></VerticalStackLayout></Grid></Border>
+    <CollectionView Grid.Row="2" ItemsSource="{Binding Payments}" EmptyView="Aucun paiement enregistré"><CollectionView.ItemTemplate><DataTemplate><Border Style="{StaticResource Card}" Margin="0,0,0,10"><Grid ColumnDefinitions="*,Auto"><VerticalStackLayout><Label Text="{Binding MonthLabel}" FontAttributes="Bold"/><Label Text="{Binding PaidAt,StringFormat='Payé le {0:dd/MM/yyyy}'}" Style="{StaticResource Caption}"/><Label Text="{Binding Reference}" Style="{StaticResource Caption}"/></VerticalStackLayout><VerticalStackLayout Grid.Column="1" HorizontalOptions="End"><Label Text="{Binding Amount,StringFormat='{0:N0} FCFA'}" FontAttributes="Bold"/><Border Style="{StaticResource Pill}" BackgroundColor="#145A3A"><Label Text="Payé" FontSize="10"/></Border></VerticalStackLayout></Grid></Border></DataTemplate></CollectionView.ItemTemplate></CollectionView>
+    <Button Grid.Row="3" Text="Payer 2 000 FCFA" Style="{StaticResource PrimaryButton}" Command="{Binding PayCommand}"/>
+  </Grid>
+</ContentPage>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CleanKwat.Controls" x:Class="CleanKwat.Views.Household.NeighborhoodSelectionPage" x:Name="Page">
+  <Grid Padding="28,22,28,28" RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="14">
+    <controls:PageHeader Grid.Row="0" Title="Votre quartier" Subtitle="Sélectionnez votre quartier pour trouver les services à proximité."/>
+    <Border Grid.Row="1" Style="{StaticResource FieldBorder}"><SearchBar Text="{Binding SearchText}" Placeholder="Rechercher un quartier..." BackgroundColor="Transparent" TextColor="White" PlaceholderColor="{StaticResource TextSecondary}"/></Border>
+    <Label Grid.Row="2" Text="12 quartiers trouvés" Style="{StaticResource Caption}"/>
+    <CollectionView Grid.Row="3" ItemsSource="{Binding Neighborhoods}" SelectionMode="None">
+      <CollectionView.ItemTemplate><DataTemplate><Border Style="{StaticResource Card}" Margin="0,0,0,8" Padding="14,10"><Grid ColumnDefinitions="34,*,Auto"><Label Text="◉" TextColor="{StaticResource PrimaryBright}" FontSize="18" VerticalOptions="Center"/><VerticalStackLayout Grid.Column="1" Spacing="0"><Label Text="{Binding Name}" FontAttributes="Bold"/><Label Text="{Binding CityDistrict}" Style="{StaticResource Caption}"/></VerticalStackLayout><Button Grid.Column="2" Text="✓" BackgroundColor="Transparent" TextColor="{StaticResource PrimaryBright}" Command="{Binding Source={x:Reference Page},Path=BindingContext.SelectCommand}" CommandParameter="{Binding .}"/></Grid></Border></DataTemplate></CollectionView.ItemTemplate>
+    </CollectionView>
+    <VerticalStackLayout Grid.Row="4" Spacing="8"><Label Text="{Binding ErrorMessage}" TextColor="{StaticResource Error}" Style="{StaticResource Caption}" IsVisible="{Binding HasError}"/><Button Text="Continuer" Style="{StaticResource PrimaryButton}" Command="{Binding ContinueCommand}"/></VerticalStackLayout>
+  </Grid>
+</ContentPage>

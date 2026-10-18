@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Auth;public partial class RegisterPage:ContentPage{public RegisterPage(){InitializeComponent();BindingContext=ServiceHelper.Get<RegisterViewModel>();}}

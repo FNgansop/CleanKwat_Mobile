@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CleanKwat.Views.Household.HouseholdHomePage">
+  <ScrollView><VerticalStackLayout Padding="28,26,28,30" Spacing="16">
+    <Grid ColumnDefinitions="Auto,*,Auto"><Border WidthRequest="46" HeightRequest="46" BackgroundColor="{StaticResource PrimaryBright}" StrokeThickness="0" StrokeShape="RoundRectangle 23"><Label Text="FL" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/></Border><VerticalStackLayout Grid.Column="1" Margin="10,0,0,0" VerticalOptions="Center" Spacing="0"><Label Text="{Binding UserName,StringFormat='Bienvenue {0} !'}" Style="{StaticResource H3}"/><Label Text="{Binding Location}" Style="{StaticResource Caption}"/></VerticalStackLayout><Button Grid.Column="2" Text="●" Style="{StaticResource TextButton}" Command="{Binding OpenNotificationsCommand}"/></Grid>
+    <Border BackgroundColor="#10B981" StrokeThickness="0" StrokeShape="RoundRectangle 14" Padding="14"><Grid ColumnDefinitions="Auto,*"><Image Source="ck_02_waste_truck.svg" WidthRequest="100" HeightRequest="58"/><Label Grid.Column="1" Text="Un quartier propre,&#10;des ménages sereins" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/></Grid></Border>
+    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+      <Button Grid.Row="0" Grid.Column="0" Text="▣&#10;Mon abonnement" Style="{StaticResource SecondaryButton}" HeightRequest="74" Command="{Binding OpenSubscriptionCommand}"/>
+      <Button Grid.Row="0" Grid.Column="1" Text="□&#10;Calendrier" Style="{StaticResource SecondaryButton}" HeightRequest="74" Command="{Binding OpenCalendarCommand}"/>
+      <Button Grid.Row="1" Grid.Column="0" Text="$&#10;Paiements" Style="{StaticResource SecondaryButton}" HeightRequest="74" Command="{Binding OpenPaymentsCommand}"/>
+      <Button Grid.Row="1" Grid.Column="1" Text="◉&#10;Signaler" Style="{StaticResource SecondaryButton}" HeightRequest="74" Command="{Binding OpenReportCommand}"/>
+    </Grid>
+    <Label Text="Prochaine collecte" Style="{StaticResource Caption}"/>
+    <Border Style="{StaticResource Card}"><Grid ColumnDefinitions="46,*,Auto"><Label Text="□" TextColor="{StaticResource PrimaryBright}" FontSize="28" VerticalOptions="Center"/><VerticalStackLayout Grid.Column="1" Spacing="2"><Label Text="Prochaine collecte" FontAttributes="Bold"/><Label Text="{Binding NextCollectionDate}" TextColor="{StaticResource PrimaryBright}" FontAttributes="Bold"/><Label Text="{Binding NextCollectionTime}" Style="{StaticResource Caption}"/></VerticalStackLayout><Label Grid.Column="2" Text="›" FontSize="26" VerticalOptions="Center"/></Grid></Border>
+    <Label Text="Mon abonnement" Style="{StaticResource Caption}"/>
+    <Border Style="{StaticResource Card}"><Grid ColumnDefinitions="46,*,Auto"><Label Text="$" TextColor="{StaticResource PrimaryBright}" FontSize="28" VerticalOptions="Center"/><VerticalStackLayout Grid.Column="1" Spacing="2"><Label Text="Mon abonnement" FontAttributes="Bold"/><Label Text="{Binding PlanName}" TextColor="{StaticResource PrimaryBright}" FontAttributes="Bold"/><Label Text="{Binding PlanPrice}" Style="{StaticResource Caption}"/></VerticalStackLayout><Border Grid.Column="2" Style="{StaticResource Pill}" BackgroundColor="{StaticResource Primary}"><Label Text="Actif" FontSize="11"/></Border></Grid></Border>
+    <Label Text="{Binding SyncLabel}" Style="{StaticResource Caption}" HorizontalTextAlignment="Center"/>
+  </VerticalStackLayout></ScrollView>
+</ContentPage>

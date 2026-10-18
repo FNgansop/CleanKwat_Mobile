@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Household;public partial class CollectionDetailPage:ContentPage{public CollectionDetailPage(){InitializeComponent();BindingContext=ServiceHelper.Get<CollectionDetailViewModel>();}}

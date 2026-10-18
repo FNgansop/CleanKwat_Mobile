@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Household;public partial class HouseholdSetupPage:ContentPage{public HouseholdSetupPage(){InitializeComponent();BindingContext=ServiceHelper.Get<HouseholdSetupViewModel>();}}

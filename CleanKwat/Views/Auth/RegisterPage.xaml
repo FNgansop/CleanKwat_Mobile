@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CleanKwat.Controls" x:Class="CleanKwat.Views.Auth.RegisterPage">
+  <ScrollView><VerticalStackLayout Padding="28,22,28,32" Spacing="16">
+    <controls:PageHeader Eyebrow="" Title="Créer un compte" Subtitle="Rejoignez CleanKwat et contribuez à des quartiers plus propres." />
+    <Label Text="Numéro de téléphone" Style="{StaticResource Caption}"/><Border Style="{StaticResource FieldBorder}"><Entry Text="{Binding Phone}" Keyboard="Telephone" Style="{StaticResource EntryStyle}"/></Border>
+    <Label Text="Mot de passe" Style="{StaticResource Caption}"/><Border Style="{StaticResource FieldBorder}"><Entry Text="{Binding Password}" IsPassword="True" Style="{StaticResource EntryStyle}"/></Border>
+    <Label Text="Confirmer le mot de passe" Style="{StaticResource Caption}"/><Border Style="{StaticResource FieldBorder}"><Entry Text="{Binding ConfirmPassword}" IsPassword="True" Style="{StaticResource EntryStyle}"/></Border>
+    <Label Text="Vous êtes ?" Style="{StaticResource Caption}"/>
+    <VerticalStackLayout Spacing="8">
+      <Button Text="🏠  Ménage" Style="{StaticResource SecondaryButton}" Command="{Binding SelectRoleCommand}" CommandParameter="Ménage" BorderColor="{StaticResource Primary}"/>
+      <Button Text="▣  Ramasseur" Style="{StaticResource SecondaryButton}" Command="{Binding SelectRoleCommand}" CommandParameter="Ramasseur"/>
+      <Button Text="⚙  Administrateur" Style="{StaticResource SecondaryButton}" Command="{Binding SelectRoleCommand}" CommandParameter="Administrateur"/>
+    </VerticalStackLayout>
+    <Label Text="{Binding ErrorMessage}" TextColor="{StaticResource Error}" Style="{StaticResource Caption}" IsVisible="{Binding HasError}"/>
+    <Button Text="Créer un compte" Style="{StaticResource PrimaryButton}" Command="{Binding RegisterCommand}"/>
+    <HorizontalStackLayout HorizontalOptions="Center" Spacing="3"><Label Text="Pas de compte ?" Style="{StaticResource Caption}"/><Button Text="Se connecter" Style="{StaticResource TextButton}" FontSize="12" Command="{Binding LoginCommand}"/></HorizontalStackLayout>
+  </VerticalStackLayout></ScrollView>
+</ContentPage>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CleanKwat.Controls" x:Class="CleanKwat.Views.Household.ReportPage">
+  <ScrollView><VerticalStackLayout Padding="28,22,28,30" Spacing="14">
+    <controls:PageHeader Eyebrow="Espace Ménage" Title="Signaler un passage manqué" Subtitle="Informez l’équipe lorsqu’une collecte n’a pas eu lieu."/>
+    <Border BackgroundColor="#4B3A1C" Stroke="#A66B11" Padding="12" StrokeShape="RoundRectangle 12"><Label Text="⚠ Vous n’avez pas vu le camion de collecte ? Signalez-le ici." TextColor="#F5C66D"/></Border>
+    <Label Text="Collecte concernée" Style="{StaticResource Caption}"/><Border Style="{StaticResource FieldBorder}"><Label Text="Ordures ménagères · Mer. 15 mai 2024 (06h – 10h)" Padding="0,14"/></Border>
+    <Label Text="Quartier" Style="{StaticResource Caption}"/><Border Style="{StaticResource FieldBorder}"><Label Text="Ngousso – Zone 1" Padding="0,14"/></Border>
+    <Label Text="Description" Style="{StaticResource Caption}"/><Border Style="{StaticResource FieldBorder}" Padding="12"><Editor Text="{Binding Description}" AutoSize="TextChanges" MinimumHeightRequest="110" Style="{StaticResource EditorStyle}"/></Border>
+    <Label Text="{Binding ErrorMessage}" TextColor="{StaticResource Error}" Style="{StaticResource Caption}" IsVisible="{Binding HasError}"/>
+    <Button Text="▣  Ajouter une photo" Style="{StaticResource SecondaryButton}" Command="{Binding PickPhotoCommand}"/>
+    <Label Text="{Binding PhotoPath}" Style="{StaticResource Caption}" LineBreakMode="TailTruncation"/>
+    <Button Text="Envoyer le signalement" Style="{StaticResource PrimaryButton}" Command="{Binding SubmitCommand}"/>
+    <Label Text="Historique" Style="{StaticResource H3}"/>
+    <VerticalStackLayout BindableLayout.ItemsSource="{Binding Reports}" Spacing="8"><BindableLayout.ItemTemplate><DataTemplate><Border Style="{StaticResource Card}"><Grid ColumnDefinitions="*,Auto"><VerticalStackLayout><Label Text="Signalement" FontAttributes="Bold"/><Label Text="{Binding CreatedAt,StringFormat='{0:dd MMM yyyy · HH:mm}'}" Style="{StaticResource Caption}"/><Label Text="{Binding Description}" Style="{StaticResource BodySmall}" MaxLines="2"/></VerticalStackLayout><Border Grid.Column="1" Style="{StaticResource Pill}" BackgroundColor="#A66B11"><Label Text="{Binding StatusDisplay}" FontSize="10"/></Border></Grid></Border></DataTemplate></BindableLayout.ItemTemplate></VerticalStackLayout>
+  </VerticalStackLayout></ScrollView>
+</ContentPage>

@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Household;public partial class PaymentsPage:ContentPage{private readonly PaymentsViewModel vm=ServiceHelper.Get<PaymentsViewModel>();public PaymentsPage(){InitializeComponent();BindingContext=vm;}protected override async void OnAppearing(){base.OnAppearing();await vm.LoadAsync();}}

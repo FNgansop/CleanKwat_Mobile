@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Household;public partial class SubscriptionPage:ContentPage{private readonly SubscriptionViewModel vm=ServiceHelper.Get<SubscriptionViewModel>();public SubscriptionPage(){InitializeComponent();BindingContext=vm;}protected override async void OnAppearing(){base.OnAppearing();await vm.LoadAsync();}}

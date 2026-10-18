@@ -1,0 +1,1 @@
+using CleanKwat.Helpers;using CleanKwat.ViewModels;namespace CleanKwat.Views.Household;public partial class CalendarPage:ContentPage{private readonly CalendarViewModel vm=ServiceHelper.Get<CalendarViewModel>();public CalendarPage(){InitializeComponent();BindingContext=vm;}protected override async void OnAppearing(){base.OnAppearing();await vm.LoadAsync();}}
