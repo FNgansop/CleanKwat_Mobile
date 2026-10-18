@@ -1,0 +1,1 @@
+CleanKwat UI assets. SVG illustrations were generated specifically for this academic prototype. Inter font files are intentionally not bundled; see README for optional local registration.
