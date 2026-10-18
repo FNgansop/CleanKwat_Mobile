@@ -1,8 +1,37 @@
-bin/
-obj/
+# Visual Studio / .NET
 .vs/
+.vscode/
+.idea/
+**/bin/
+**/obj/
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
+
+# Android / MAUI build outputs
 *.apk
 *.aab
 *.keystore
+*.jks
+*.apks
+artifacts/
+
+# Local databases / runtime data
+*.db
+*.db3
+*.sqlite
+*.sqlite3
+
+# OS / temporary
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Secrets / local settings
+secrets.json
+appsettings.Local.json
+.env
+.env.*
+!.env.example
