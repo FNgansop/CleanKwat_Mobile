@@ -1,32 +1,10 @@
 # CleanKwat — .NET MAUI / C#
 
-Application mobile universitaire de gestion des abonnements et tournées de collecte des déchets, développée en **.NET 10 MAUI**, **C#**, **XAML**, **MVVM**, **SQLite** et pensée pour Android dans Visual Studio.
-
-## Fidélité aux maquettes
-
-Les 13 écrans du PDF de référence sont traités comme source de vérité visuelle :
-
-1. Onboarding / présentation
-2. Inscription
-3. Connexion
-4. Choix du quartier
-5. Configuration du ménage
-6. Accueil ménage
-7. Calendrier des collectes
-8. Détail de la collecte
-9. Connexion ramasseur
-10. Tableau de bord ramasseur
-11. Mes tournées
-12. Gestion des quartiers Admin
-13. Suivi des collectes Admin
-
-Des écrans complémentaires ont été ajoutés en gardant le même design system : abonnement, paiements, signalement, notifications, détail tournée, confirmation collecte, dashboard admin et gestion des ramasseurs.
-
-La référence graphique originale est disponible dans `Docs/CleanKwat_Maquettes_Reference.pdf`.
+Application mobile de gestion des abonnements et tournées de collecte des déchets, développée en **.NET 10 MAUI**, **C#**, **XAML**, **MVVM**, **SQLite** et pensée pour Android dans Visual Studio.
 
 ## Prérequis
 
-- Windows 10/11
+- Ubuntu
 - Visual Studio récent avec la charge de travail **.NET Multi-platform App UI development**
 - SDK .NET 10
 - Android SDK / émulateur ou téléphone Android avec débogage USB
