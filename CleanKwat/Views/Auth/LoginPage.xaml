@@ -8,7 +8,7 @@
     <Label Text="{Binding ErrorMessage}" TextColor="{StaticResource Error}" Style="{StaticResource Caption}" IsVisible="{Binding HasError}"/>
     <Button Text="Se connecter" Style="{StaticResource PrimaryButton}" Command="{Binding LoginCommand}"/>
     <Label Text="Ou continuer avec" Style="{StaticResource Caption}" HorizontalTextAlignment="Center"/>
-    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="14"><Button Grid.Column="0" Text="G" Style="{StaticResource SecondaryButton}"/><Button Grid.Column="1" Text="in" Style="{StaticResource SecondaryButton}"/><Button Grid.Column="2" Text="f" Style="{StaticResource SecondaryButton}"/></Grid>
+    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="14"><Button Grid.Column="0" Text="G" Style="{StaticResource SecondaryButton}" Command="{Binding ExternalLoginCommand}" CommandParameter="Google"/><Button Grid.Column="1" Text="in" Style="{StaticResource SecondaryButton}" Command="{Binding ExternalLoginCommand}" CommandParameter="LinkedIn"/><Button Grid.Column="2" Text="f" Style="{StaticResource SecondaryButton}" Command="{Binding ExternalLoginCommand}" CommandParameter="Facebook"/></Grid>
     <HorizontalStackLayout HorizontalOptions="Center" Spacing="3"><Label Text="Pas de compte ?" Style="{StaticResource Caption}"/><Button Text="Créer un compte" Style="{StaticResource TextButton}" FontSize="12" Command="{Binding RegisterCommand}"/></HorizontalStackLayout>
     <Button Text="Accès Ramasseur" Style="{StaticResource SecondaryButton}" Clicked="OnCollectorClicked"/>
   </VerticalStackLayout></ScrollView>

@@ -9,8 +9,34 @@ namespace CleanKwat.ViewModels;
 public partial class CollectorLoginViewModel : BaseViewModel
 {
     private readonly IAuthenticationService _auth;
-    [ObservableProperty] private string identifier="collector@cleankwat.local";
-    [ObservableProperty] private string password="Collector123!";
-    public CollectorLoginViewModel(INavigationService nav,IConnectivityService conn,IAuthenticationService auth):base(nav,conn)=>_auth=auth;
-    [RelayCommand] private async Task LoginAsync(){await RunAsync(async()=>{var r=await _auth.LoginAsync(Identifier.Trim(),Password);if(!r.Success||r.User is null||r.User.Role!=UserRole.Collector.ToString()){ErrorMessage="Accès Ramasseur refusé.";return;}await Navigation.GoToAsync(Routes.CollectorDashboard);});}
+    private readonly IDialogService _dialogs;
+
+    [ObservableProperty] private string identifier = "collector@cleankwat.local";
+    [ObservableProperty] private string password = "Collector123!";
+
+    public CollectorLoginViewModel(INavigationService nav, IConnectivityService conn, IAuthenticationService auth, IDialogService dialogs) : base(nav, conn)
+    {
+        _auth = auth;
+        _dialogs = dialogs;
+    }
+
+    [RelayCommand]
+    private async Task LoginAsync()
+    {
+        await RunAsync(async () =>
+        {
+            var r = await _auth.LoginAsync(Identifier.Trim(), Password);
+            if (!r.Success || r.User is null || r.User.Role != UserRole.Collector.ToString())
+            {
+                ErrorMessage = "Accès Ramasseur refusé.";
+                return;
+            }
+            await Navigation.GoToAsync(Routes.CollectorDashboard);
+        });
+    }
+
+    [RelayCommand]
+    private Task ContactAdminAsync() => _dialogs.AlertAsync(
+        "Contacter l’administrateur",
+        "Pour la démonstration académique, utilisez le compte ramasseur fourni dans le README.");
 }

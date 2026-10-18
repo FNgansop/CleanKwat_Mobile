@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CleanKwat.Controls" x:Class="CleanKwat.Views.Admin.AdminNeighborhoodsPage" x:Name="Page">
-  <Grid Padding="28,22,28,28" RowDefinitions="Auto,Auto,Auto,Auto,*" RowSpacing="12"><controls:PageHeader Grid.Row="0" Eyebrow="Espace Admin" Title="Gestion des quartiers" Subtitle="Créez, modifiez et suivez les quartiers desservis."/><Button Grid.Row="1" Text="＋  Ajouter un quartier" Style="{StaticResource PrimaryButton}" Command="{Binding AddCommand}"/><Border Grid.Row="2" Style="{StaticResource FieldBorder}"><SearchBar Text="{Binding SearchText}" Placeholder="Nom du quartier..." BackgroundColor="Transparent" TextColor="White" PlaceholderColor="{StaticResource TextSecondary}"/></Border><Grid Grid.Row="3" ColumnDefinitions="*,*,*" ColumnSpacing="6"><Button Grid.Column="0" Text="Tous 7" Style="{StaticResource PrimaryButton}" HeightRequest="38"/><Button Grid.Column="1" Text="Actifs 7" Style="{StaticResource SecondaryButton}" HeightRequest="38"/><Button Grid.Column="2" Text="Inactifs 0" Style="{StaticResource SecondaryButton}" HeightRequest="38"/></Grid><CollectionView Grid.Row="4" ItemsSource="{Binding Neighborhoods}"><CollectionView.ItemTemplate><DataTemplate><Border Style="{StaticResource Card}" Margin="0,0,0,8"><Grid ColumnDefinitions="42,*,Auto"><Label Text="◉" TextColor="{StaticResource PrimaryBright}" FontSize="22" VerticalOptions="Center"/><VerticalStackLayout Grid.Column="1"><Label Text="{Binding Name}" FontAttributes="Bold"/><Label Text="{Binding HouseholdCount,StringFormat='{0} ménages'}" Style="{StaticResource Caption}"/></VerticalStackLayout><VerticalStackLayout Grid.Column="2" HorizontalOptions="End"><Border Style="{StaticResource Pill}" BackgroundColor="#145A3A"><Label Text="Actif" FontSize="10"/></Border><Button Text="✎" Style="{StaticResource TextButton}" Command="{Binding Source={x:Reference Page},Path=BindingContext.EditCommand}" CommandParameter="{Binding .}"/></VerticalStackLayout></Grid></Border></DataTemplate></CollectionView.ItemTemplate></CollectionView></Grid>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:CleanKwat.Controls"
+             x:Class="CleanKwat.Views.Admin.AdminNeighborhoodsPage"
+             x:Name="Page">
+  <Grid Padding="28,22,28,28" RowDefinitions="Auto,Auto,Auto,Auto,*" RowSpacing="12">
+    <controls:PageHeader Grid.Row="0" Eyebrow="Espace Admin" Title="Gestion des quartiers" Subtitle="Créez, modifiez et suivez les quartiers desservis."/>
+    <Button Grid.Row="1" Text="＋  Ajouter un quartier" Style="{StaticResource PrimaryButton}" Command="{Binding AddCommand}"/>
+    <Border Grid.Row="2" Style="{StaticResource FieldBorder}">
+      <SearchBar Text="{Binding SearchText}" Placeholder="Nom du quartier..." BackgroundColor="Transparent" TextColor="White" PlaceholderColor="{StaticResource TextSecondary}"/>
+    </Border>
+    <Grid Grid.Row="3" ColumnDefinitions="*,*,*" ColumnSpacing="6">
+      <Button Grid.Column="0" Text="{Binding AllCount,StringFormat='Tous {0}'}" Style="{StaticResource PrimaryButton}" HeightRequest="38" Command="{Binding FilterCommand}" CommandParameter="Tous"/>
+      <Button Grid.Column="1" Text="{Binding ActiveCount,StringFormat='Actifs {0}'}" Style="{StaticResource SecondaryButton}" HeightRequest="38" Command="{Binding FilterCommand}" CommandParameter="Actifs"/>
+      <Button Grid.Column="2" Text="{Binding InactiveCount,StringFormat='Inactifs {0}'}" Style="{StaticResource SecondaryButton}" HeightRequest="38" Command="{Binding FilterCommand}" CommandParameter="Inactifs"/>
+    </Grid>
+    <CollectionView Grid.Row="4" ItemsSource="{Binding Neighborhoods}">
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <Border Style="{StaticResource Card}" Margin="0,0,0,8">
+            <Grid ColumnDefinitions="42,*,Auto">
+              <Label Text="◉" TextColor="{StaticResource PrimaryBright}" FontSize="22" VerticalOptions="Center"/>
+              <VerticalStackLayout Grid.Column="1">
+                <Label Text="{Binding Name}" FontAttributes="Bold"/>
+                <Label Text="{Binding HouseholdCount,StringFormat='{0} ménages'}" Style="{StaticResource Caption}"/>
+              </VerticalStackLayout>
+              <VerticalStackLayout Grid.Column="2" HorizontalOptions="End">
+                <Border Style="{StaticResource Pill}" BackgroundColor="#145A3A"><Label Text="Actif" FontSize="10"/></Border>
+                <Button Text="✎" Style="{StaticResource TextButton}" Command="{Binding Source={x:Reference Page},Path=BindingContext.EditCommand}" CommandParameter="{Binding .}"/>
+              </VerticalStackLayout>
+            </Grid>
+          </Border>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+  </Grid>
 </ContentPage>

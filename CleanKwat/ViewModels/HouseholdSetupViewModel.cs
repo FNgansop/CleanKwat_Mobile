@@ -18,5 +18,6 @@ public partial class HouseholdSetupViewModel : BaseViewModel
     [RelayCommand] private void Increment()=>HouseholdSize=Math.Min(20,HouseholdSize+1);
     [RelayCommand] private void Decrement()=>HouseholdSize=Math.Max(1,HouseholdSize-1);
     [RelayCommand] private void SelectHousing(string type)=>HousingType=type;
+    [RelayCommand] private Task ModifyNeighborhood()=>Navigation.GoToAsync(Routes.Neighborhood);
     [RelayCommand] private async Task SaveAsync(){await RunAsync(async()=>{if(_state.CurrentUser is null||Neighborhood is null){ErrorMessage="Session ou quartier manquant.";return;}var h=new Household{UserId=_state.CurrentUser.Id,NeighborhoodId=Neighborhood.Id,HouseholdSize=HouseholdSize,HousingType=HousingType};await _data.SaveHouseholdAsync(h);_state.CurrentHousehold=h;await Navigation.GoToAsync(Routes.HouseholdHome);});}
 }

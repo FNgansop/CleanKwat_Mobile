@@ -37,4 +37,5 @@ public partial class LoginViewModel : BaseViewModel
 
     [RelayCommand] private async Task RegisterAsync() => await Navigation.GoToAsync(Routes.Register);
     [RelayCommand] private async Task ForgotAsync() => await _dialogs.AlertAsync("Mot de passe oublié", "Pour cette démonstration académique, contactez l’administrateur du service.");
+    [RelayCommand] private Task ExternalLoginAsync(string provider) => _dialogs.AlertAsync("Connexion externe", $"La connexion {provider} est présentée dans la maquette mais n’est pas requise pour cette démonstration académique.");
 }

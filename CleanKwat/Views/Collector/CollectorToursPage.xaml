@@ -2,8 +2,30 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CleanKwat.Controls" x:Class="CleanKwat.Views.Collector.CollectorToursPage" x:Name="Page">
   <Grid Padding="28,22,28,28" RowDefinitions="Auto,Auto,Auto,*" RowSpacing="14">
     <controls:PageHeader Grid.Row="0" Eyebrow="Espace Ramasseur" Title="Mes tournées" Subtitle="La liste de vos tournées assignées."/>
-    <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="8"><Button Grid.Column="0" Text="Aujourd’hui" Style="{StaticResource PrimaryButton}" HeightRequest="42"/><Button Grid.Column="1" Text="Demain" Style="{StaticResource SecondaryButton}" HeightRequest="42"/><Button Grid.Column="2" Text="Cette semaine" Style="{StaticResource SecondaryButton}" HeightRequest="42"/></Grid>
-    <Grid Grid.Row="2" ColumnDefinitions="*,Auto"><Label Text="Mercredi 15 mai 2024" FontAttributes="Bold"/><Label Grid.Column="1" Text="3 tournées" Style="{StaticResource Caption}"/></Grid>
-    <CollectionView Grid.Row="3" ItemsSource="{Binding Tours}" SelectionMode="None"><CollectionView.ItemTemplate><DataTemplate><Border Style="{StaticResource Card}" Margin="0,0,0,12"><VerticalStackLayout Spacing="8"><Grid ColumnDefinitions="*,Auto"><Label Text="{Binding StatusDisplay}" TextColor="{StaticResource PrimaryBright}" FontAttributes="Bold"/><Label Grid.Column="1" Text="{Binding TimeWindow}" Style="{StaticResource Caption}"/></Grid><Label Text="Quartier" Style="{StaticResource Caption}"/><Label Text="{Binding Name}" Style="{StaticResource H3}"/><Label Text="{Binding CompletedCount,StringFormat='{0} effectuées'}" Style="{StaticResource Caption}"/><ProgressBar Progress="{Binding Progress}" ProgressColor="{StaticResource PrimaryBright}"/><Button Text="Voir la tournée" Style="{StaticResource SecondaryButton}" Command="{Binding Source={x:Reference Page},Path=BindingContext.OpenCommand}" CommandParameter="{Binding .}"/></VerticalStackLayout></Border></DataTemplate></CollectionView.ItemTemplate></CollectionView>
+    <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="8">
+      <Button Grid.Column="0" Text="Aujourd’hui" Style="{StaticResource PrimaryButton}" HeightRequest="42" Command="{Binding SelectPeriodCommand}" CommandParameter="Aujourd’hui"/>
+      <Button Grid.Column="1" Text="Demain" Style="{StaticResource SecondaryButton}" HeightRequest="42" Command="{Binding SelectPeriodCommand}" CommandParameter="Demain"/>
+      <Button Grid.Column="2" Text="Cette semaine" Style="{StaticResource SecondaryButton}" HeightRequest="42" Command="{Binding SelectPeriodCommand}" CommandParameter="Cette semaine"/>
+    </Grid>
+    <Grid Grid.Row="2" ColumnDefinitions="*,Auto">
+      <Label Text="{Binding PeriodTitle}" FontAttributes="Bold"/>
+      <Label Grid.Column="1" Text="{Binding TourCountLabel}" Style="{StaticResource Caption}"/>
+    </Grid>
+    <CollectionView Grid.Row="3" ItemsSource="{Binding Tours}" SelectionMode="None">
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <Border Style="{StaticResource Card}" Margin="0,0,0,12">
+            <VerticalStackLayout Spacing="8">
+              <Grid ColumnDefinitions="*,Auto"><Label Text="{Binding StatusDisplay}" TextColor="{StaticResource PrimaryBright}" FontAttributes="Bold"/><Label Grid.Column="1" Text="{Binding TimeWindow}" Style="{StaticResource Caption}"/></Grid>
+              <Label Text="Quartier" Style="{StaticResource Caption}"/>
+              <Label Text="{Binding Name}" Style="{StaticResource H3}"/>
+              <Label Text="{Binding CompletedCount,StringFormat='{0} effectuées'}" Style="{StaticResource Caption}"/>
+              <ProgressBar Progress="{Binding Progress}" ProgressColor="{StaticResource PrimaryBright}"/>
+              <Button Text="Voir la tournée" Style="{StaticResource SecondaryButton}" Command="{Binding Source={x:Reference Page},Path=BindingContext.OpenCommand}" CommandParameter="{Binding .}"/>
+            </VerticalStackLayout>
+          </Border>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
   </Grid>
 </ContentPage>
